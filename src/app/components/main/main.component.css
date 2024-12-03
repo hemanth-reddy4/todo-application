@@ -1,0 +1,166 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+}
+
+.menu-icon {
+  cursor: pointer;
+  margin-right: 10px;
+}
+.side-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 64px;
+  height: calc(100% - 64px);
+  background-color: black;
+  width: 230px;
+  padding: 20px 15px 15px 15px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  opacity: 1; /* Ensures the panel starts visible */
+  transform: translateX(0); /* Starts at its original position */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for both opacity and transform */
+}
+
+.side-panel.hidden {
+  opacity: 0; /* Hides the side panel */
+  transform: translateX(-100%); /* Moves it off-screen */
+}
+
+.side-panel h3 {
+  font-size: 18px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Other side panel styles remain unchanged */
+
+
+.side-panel ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.side-panel li {
+  padding: 8px 12px;
+  background-color: transparent;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-weight: lighter;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.side-panel li:hover {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.side-panel button {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: lighter;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.side-panel button:hover {
+  background-color: #2980b9;
+}
+
+.side-panel button span {
+  margin-right: 8px;
+}
+
+.side-panel input {
+  margin-top: 10px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.side-panel input:focus {
+  outline-color: #3498db;
+}
+.addBoard {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Optional: Adds spacing between input and button */
+}
+
+.addBoard input[type="text"] {
+  display: flex;
+  align-items: center;
+  /* Optional: Adds spacing between input and button */
+}
+
+.addBoard input[type="text"] {
+  display: flex;
+  background-color: black;
+  width: 100%;
+  color: white;
+  padding: 10px 15px;
+  /* Adds padding for better text spacing */
+  border: 2px solid #333;
+  /* Adds a border with a dark color */
+  border-radius: 8px;
+  /* Rounds the corners */
+  font-size: 14px;
+  /* Increases font size for readability */
+  box-sizing: border-box;
+  /* Ensures padding and border are included in the width */
+  transition: all 0.3s ease;
+}
+
+.save-board-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /* Optional: Adjust padding for button appearance */
+  /* Optional: Rounded corners for button */
+  border-radius: 4px;
+  background-color: none;
+  color:white;
+}
+
+.save-board-button span {
+  font-size: 24px;
+  /* Optional: Adjust tick mark size */
+}
+
+.board-container {
+  transition: margin-left 0.3s, width 0.3s;
+  width: 100%;
+}
+.board-container.side-panel-open {
+  width: calc(100% - 260px); /* Adjust the width when the side panel is open */
+  margin-left: 260px; /* Shift the board to the right */
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+} 

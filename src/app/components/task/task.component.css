@@ -1,0 +1,98 @@
+.task {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    border-radius: 8px;
+    color: #e0e0e0;
+    margin-bottom: 10px;
+    position: relative; /* For absolute positioning of options */
+}
+
+.task-header {
+    display: flex; /* Align title and options on the same line */
+    justify-content: space-between; /* Space between title and options */
+    align-items: flex-start; /* Center items vertically */
+}
+
+.task-title {
+    font-size: 16px;
+    color: #e0e0e0;
+    margin-right: 10px;
+}
+
+.task-info {
+    display: flex;
+    align-items: center; /* Center align date and tag */
+    margin-top: 4px; /* Space between title and date */
+}
+
+.task-date {
+    background-color: #1b1b26;
+    color: #4a90e2;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.task-tag {
+    background-color: #4a4a5a;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+/* High priority tag styling */
+.high-priority {
+    background-color: #e46765; /* Light red background */
+}
+
+.low-priority {
+    visibility: hidden; /* Brighter blue for low priority */
+}
+
+.options {
+    color: #7e7e8e;
+    cursor: pointer;
+    position: relative; /* For positioning the dropdown */
+}
+.three-dots{
+    visibility: hidden;
+}
+
+.task:hover .three-dots{
+    visibility: visible;
+}
+.task-options-menu {
+    position: absolute; /* Position absolutely relative to .options */
+    right: -100px; /* Move it slightly to the right */
+    top: 100%; /* Position it just below the three dots */
+    background-color: #2a2a3a; /* Same background as task */
+    border-radius: 5px; /* Rounded corners for the menu */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    z-index: 10; /* Ensure it appears above other elements */
+    display: flex;
+    flex-direction: column; /* Stack options vertically */
+}
+
+.task-options-menu div {
+    padding: 8px 12px; /* Padding for each option */
+    color: #e0e0e0; /* Light color for text */
+    cursor: pointer; /* Pointer cursor for interactivity */
+}
+
+.task-options-menu div:hover {
+    background-color: #3a3a4a; /* Highlight on hover */
+} 
+.task-options-menu {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .strikethrough {
+    text-decoration: line-through;
+    color: gray;
+  }

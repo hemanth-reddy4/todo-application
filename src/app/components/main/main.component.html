@@ -1,0 +1,37 @@
+<div class="main-container">
+  <!-- Navbar -->
+  <app-navbar (sidePanelToggle)="toggleSidePanel($event)" (searchTermChanged)="onSearchTermChanged($event)"></app-navbar>
+
+  <div class="main-panel">
+    <div [class.side-panel-open]="isSidePanelOpen" [class.hidden]="!isSidePanelOpen" class="side-panel">
+      <h3>Boards</h3>
+      <ul>
+        <li *ngFor="let board of boards" (click)="selectBoard(board)">
+          {{ board.name }}
+        </li>
+      </ul>
+      <div class="addBoard" *ngIf="isAddingBoard; else showButton">
+        <input type="text" [(ngModel)]="newBoardName" placeholder="Enter new board name" (keydown.enter)="addBoard()" />
+            <div class="save-board-button" (click)="addBoard()">
+                <span>✔</span>
+            </div>
+      </div>
+      <ng-template #showButton>
+        <button (click)="startAddingBoard()"><span>+</span> Add New Board</button>
+      </ng-template>
+    </div>
+
+    <!-- Board Container, adjusts based on side panel state -->
+    <div class="board-container" [class.side-panel-open]="isSidePanelOpen">
+      <app-board 
+        [id] = "selectedBoard?.id??0"
+        [boardTitle]="selectedBoard?.name??''" 
+        [searchTerm]="searchTerm"
+        [userId]="this.userId"
+        (titleUpdate)="editBoardTitle($event)"
+        (delete)="deleteBoard($event)"
+        (taskListDeleted)="handleTaskListDeletion($event)">
+      </app-board>
+    </div>
+  </div>
+</div>

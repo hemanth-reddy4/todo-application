@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+  }
+  
+  .container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .description {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #232b2b;
+    color: white;
+  }
+  
+  .description-content {
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .description h2 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  
+  .description p {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align:justify;
+  }
+  
+  .form-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+  }
+  
+  .form-content {
+    width: 350px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px; /* Rounded corners for a tile effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Darker shadow for floating effect */
+    position: relative;
+    transform: translateY(-20px); /* Slight vertical offset to lift it visually */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  }
+  
+  /* Optional: Add a subtle hover effect for extra interactivity */
+.form-content:hover {
+  transform: translateY(-25px); /* Lift slightly on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35); /* Deepen shadow on hover */
+}
+  h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 4px;
+  }
+  
+  input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .submit-btn {
+    padding: 10px;
+    background-color: #232b2b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #414a4c;
+  }
+  
+  .toggle-text {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .toggle-text button {
+    background: none;
+    border: none;
+    color: #2979ff;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+  .invalid {
+    border: 1px solid red;
+  }
+  .container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #e0e0e0; /* Light background to contrast with form */
+  }

@@ -1,0 +1,102 @@
+<div class="container">
+  <!-- Left Side - Description -->
+  <div class="description">
+    <div class="description-content">
+      <h2>Todo Management</h2>
+      <p>
+        A todo management application is a software tool designed to help users
+        organize and track their tasks, responsibilities, and goals in a systematic
+        and efficient manner. These applications are designed to enhance productivity
+        and time management by providing users with a centralized platform to create,
+        prioritize, and manage their to-do lists.
+      </p>
+    </div>
+  </div>
+
+  <!-- Right Side - Login/Signup Form -->
+  <div class="form-container">
+    <div class="form-content">
+      <h3 *ngIf="!isSignupMode">Login Here</h3>
+      <h3 *ngIf="isSignupMode">Sign Up Here</h3>
+
+      <!-- Login Form -->
+      <form *ngIf="!isSignupMode" (ngSubmit)="onSubmit()">
+        <label>Email Address</label>
+        <input
+          type="email"
+          placeholder="Email Address"
+          [(ngModel)]="email"
+          name="email"
+          required
+          [ngClass]="{ 'invalid': (!isEmailValid(email) || !email) && submitted }"
+        />
+
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          [(ngModel)]="password"
+          name="password"
+          minlength="8"
+          required
+          [ngClass]="{ 'invalid': (!password || password.length < 8) && submitted }"
+        />
+
+        <button type="submit" class="submit-btn">Submit</button>
+        <p class="toggle-text">Don't have an account? 
+          <button type="button" (click)="toggleSignup()">Sign Up</button>
+        </p>
+      </form>
+
+      <!-- Signup Form -->
+      <form *ngIf="isSignupMode" (ngSubmit)="onSubmit()">
+        <label>Name</label>
+        <input
+          type="text"
+          placeholder="Name"
+          [(ngModel)]="name"
+          name="name"
+          required
+          [ngClass]="{ 'invalid': !name && submitted }"
+        />
+
+        <label>Age</label>
+        <input
+          type="number"
+          placeholder="Age"
+          [(ngModel)]="age"
+          name="age"
+          min="12"
+          required
+          [ngClass]="{ 'invalid': (!age || age < 12) && submitted }"
+        />
+
+        <label>Email Address</label>
+        <input
+          type="email"
+          placeholder="Email Address"
+          [(ngModel)]="email"
+          name="email"
+          required
+          [ngClass]="{ 'invalid': (!isEmailValid(email) || !email) && submitted }"
+        />
+
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          [(ngModel)]="password"
+          name="password"
+          minlength="8"
+          required
+          [ngClass]="{ 'invalid': (!password || password.length < 8) && submitted }"
+        />
+
+        <button type="submit" class="submit-btn">Sign Up</button>
+        <p class="toggle-text">Already have an account? 
+          <button type="button" (click)="toggleSignup()">Login</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

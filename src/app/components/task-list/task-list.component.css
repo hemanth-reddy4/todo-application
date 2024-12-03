@@ -1,0 +1,619 @@
+.task-list-container {
+  background-color: #2C3333;
+  /* Dark background */
+  border-radius: 8px;
+  /* Rounded corners */
+  padding: 16px;
+  /* Inner spacing */
+  width: 300px;
+  /* Fixed width */
+  margin: 8px;
+  /* Outer spacing */
+  color: #ffffff;
+  /* Text color */
+  font-family: Arial, sans-serif;
+  /* Font style */
+  display: flex;
+  /* Flexbox layout */
+  flex-direction: column;
+  /* Vertical stacking */
+}
+
+.task-list-header {
+  display: flex;
+  /* Flex layout for header */
+  justify-content: space-between;
+  /* Space between items */
+  font-size: 18px;
+  /* Font size for header */
+  font-weight: bold;
+  /* Bold text */
+  color: #e0e0e0;
+  /* Header text color */
+}
+
+.add-new-task {
+  margin-top: 8px;
+  /* Spacing above the button */
+  margin-left: 8px;
+  /* Spacing to the left */
+  cursor: pointer;
+  /* Pointer on hover */
+  margin-bottom: 12px;
+  /* Spacing below */
+}
+
+.add-new-task>span {
+  color: #00aaff;
+  /* Button text color */
+  font-size: 18px;
+  padding-right: 8px;
+}
+
+.options {
+  font-size: 16px;
+  font-weight: lighter;
+  color: #7e7e8e;
+  cursor: pointer;
+  position: relative;
+  /* For positioning the dropdown */
+  z-index: 10;
+}
+
+.tasklist-options-menu {
+  position: absolute;
+  /* Position absolutely relative to .options */
+  right: -100px;
+  /* Move it slightly to the right */
+  top: 100%;
+  /* Position it just below the three dots */
+  background-color: #2a2a3a;
+  /* Same background as task */
+  border-radius: 5px;
+  /* Rounded corners for the menu */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  /* Subtle shadow for depth */
+  z-index: 10;
+  /* Ensure it appears above other elements */
+  display: flex;
+  flex-direction: column;
+  /* Stack options vertically */
+}
+
+.tasklist-options-menu div {
+  padding: 8px 12px;
+  /* Padding for each option */
+  color: #e0e0e0;
+  /* Light color for text */
+  cursor: pointer;
+  /* Pointer cursor for interactivity */
+}
+
+.tasklist-options-menu {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.tasklist-options-menu div:hover {
+  background-color: #3a3a4a;
+  /* Highlight on hover */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Task item container */
+.task-item div:nth-child(1) {
+  position: relative;
+  display: flex;
+  /* Aligns radio button and task content in a row */
+  align-items: center;
+  margin-top: 10px 0;
+  gap: 10px;
+  /* Space between radio button and task content */
+  align-items: flex-start;
+}
+
+.task-label {
+  display: flex;
+  /* Flex layout for task label */
+  align-items: flex-start;
+  /* Align items vertically at the start */
+}
+
+app-task {
+  flex-grow: 1;
+  /* Allow the task component to grow */
+}
+
+.titleEdit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Optional: Adds spacing between input and button */
+}
+
+.titleEdit input[type="text"] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Optional: Adds spacing between input and button */
+}
+
+.titleEdit input[type="text"] {
+  display: flex;
+  background-color: black;
+  width: 100%;
+  color: white;
+  padding: 10px 15px;
+  /* Adds padding for better text spacing */
+  border: 2px solid #333;
+  /* Adds a border with a dark color */
+  border-radius: 8px;
+  /* Rounds the corners */
+  font-size: 14px;
+  /* Increases font size for readability */
+  box-sizing: border-box;
+  /* Ensures padding and border are included in the width */
+  transition: all 0.3s ease;
+}
+
+.save-title-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /* Optional: Adjust padding for button appearance */
+  /* Optional: Rounded corners for button */
+  padding-bottom: 2px;
+  border-radius: 4px;
+  background-color: none;
+}
+
+.save-title-button span {
+  font-size: 24px;
+  /* Optional: Adjust tick mark size */
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+  /* Space between radio button and task title */
+}
+
+.task-radio {
+  appearance: none;
+  /* Hide the default radio button */
+  width: 15px;
+  /* Size of the custom radio button */
+  height: 15px;
+  border: 2px solid white;
+  /* Border color */
+  border-radius: 50%;
+  /* Make it circular */
+  margin-right: 10px;
+  /* Space between radio button and task */
+  cursor: pointer;
+  /* Change cursor on hover */
+  position: relative;
+  outline: none;
+  /* Remove default outline */
+  transition: background-color 0.2s;
+  /* Smooth transition */
+}
+
+.task-radio:checked {
+  background-color: white;
+  /* Background color when checked */
+}
+
+.task-radio:checked::after {
+  content: '';
+  width: 10px;
+  /* Inner circle size */
+  height: 10px;
+  background-color: white;
+  /* Inner circle color */
+  border-radius: 50%;
+  /* Make it circular */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Center the inner circle */
+}
+
+.task-radio:hover {
+  border-color: #007BFF;
+  /* Change border color on hover */
+}
+
+.completed-tasks {
+  margin-top: 8px;
+  /* Space above completed tasks section */
+}
+
+.completed-header {
+  display: flex;
+  /* Align title and arrow */
+  justify-content: space-between;
+  /* Space between title and arrow */
+  align-items: center;
+  /* Center vertically */
+  cursor: pointer;
+  /* Change cursor to pointer */
+  padding: 10px;
+  /* Padding for header */
+  border-radius: 5px;
+  /* Rounded corners */
+}
+
+.completed-tasks-list {
+  margin-top: 10px;
+  /* Space between header and tasks */
+  border-radius: 5px;
+  /* Rounded corners */
+  padding: 10px;
+  /* Padding inside the list */
+}
+
+.completed-task-item {
+  margin-bottom: 10px;
+  /* Space between completed tasks */
+}
+
+.arrow {
+  transition: transform 0.3s;
+  /* Smooth transition for arrow rotation */
+}
+
+.down-arrow {
+  transform: rotate(180deg);
+  /* Rotate arrow down */
+}
+
+.up-arrow {
+  transform: rotate(0deg);
+  /* Arrow pointing up */
+}
+
+/* Other styling to match your theme */
+.task-list-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.task-input-container>div:nth-child(2) {
+  display: flex;
+  align-content: space-between;
+  gap: 20px;
+}
+
+.task-input-container>div:nth-child(2) div:first-child {
+  margin-top: 8px;
+  gap: 4px;
+}
+
+.task-input-container div>input[type="date"] {
+  display: block;
+  /* Make it behave like a block-level element */
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  /* Adds padding for comfortable text placement */
+  border: 2px solid #333;
+  /* Adds a dark border */
+  border-radius: 8px;
+  /* Rounded corners */
+  font-size: 10px;
+  /* Font size for readability */
+  box-sizing: border-box;
+  /* Includes padding and border in the width */
+  margin-left: 8px;
+  margin-bottom: 10px;
+  /* Adds space below the input */
+  transition: all 0.3s ease;
+  /* Smooth transition for focus/hover states */
+}
+
+/* Style for the select dropdown */
+.task-input-container div>select {
+  display: block;
+  /* Ensures the select element takes up full width */
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  /* Padding for better text placement */
+  border: 2px solid #333;
+  /* Adds a dark border */
+  border-radius: 8px;
+  /* Rounded corners for a consistent look */
+  font-size: 10px;
+  /* Adjust font size */
+  box-sizing: border-box;
+  /* Includes padding and border in the width */
+  transition: all 0.3s ease;
+  /* Smooth transition for focus/hover states */
+  height: 38px;
+}
+
+/* Add hover effect for date input */
+.task-input-container div>input[type="date"]:hover {
+  border-color: #777;
+  background-color: #333;
+}
+
+/* Add hover effect for select */
+.task-input-container div>select:hover {
+  border-color: #777;
+  background-color: #333;
+}
+
+/* Focus effect for date input */
+.task-input-container div>input[type="date"]:focus {
+  border-color: #ff8c00;
+  /* Bright border color on focus */
+  background-color: #444;
+  outline: none;
+  /* Removes the default focus outline */
+}
+
+/* Focus effect for select dropdown */
+.task-input-container div>select:focus {
+  border-color: #ff8c00;
+  background-color: #444;
+  outline: none;
+}
+
+.task-input-container div:nth-child(1) {
+  display: flex;
+}
+
+.task-input-container div:nth-child(1)>input {
+  display: flex;
+  background-color: black;
+  width: 100%;
+  color: white;
+  padding: 10px 15px;
+  /* Adds padding for better text spacing */
+  border: 2px solid #333;
+  /* Adds a border with a dark color */
+  border-radius: 8px;
+  /* Rounds the corners */
+  font-size: 14px;
+  /* Increases font size for readability */
+  box-sizing: border-box;
+  /* Ensures padding and border are included in the width */
+  transition: all 0.3s ease;
+  /* Smooth transition for hover/focus states */
+}
+
+.task-input-container div:nth-child(2) {
+  display: flex;
+  align-content: space-between;
+  gap: 20px;
+}
+
+.task-input-container div:nth-child(2) div:first-child {
+  margin-top: 8px;
+  gap: 4px;
+}
+
+.task-input-container div>input[type="date"] {
+  display: block;
+  /* Make it behave like a block-level element */
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  /* Adds padding for comfortable text placement */
+  border: 2px solid #333;
+  /* Adds a dark border */
+  border-radius: 8px;
+  /* Rounded corners */
+  font-size: 10px;
+  /* Font size for readability */
+  box-sizing: border-box;
+  /* Includes padding and border in the width */
+  margin-left: 8px;
+  margin-bottom: 10px;
+  /* Adds space below the input */
+  transition: all 0.3s ease;
+  /* Smooth transition for focus/hover states */
+}
+
+/* Style for the select dropdown */
+.task-input-container div>select {
+  display: block;
+  /* Ensures the select element takes up full width */
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  /* Padding for better text placement */
+  border: 2px solid #333;
+  /* Adds a dark border */
+  border-radius: 8px;
+  /* Rounded corners for a consistent look */
+  font-size: 10px;
+  /* Adjust font size */
+  box-sizing: border-box;
+  /* Includes padding and border in the width */
+  transition: all 0.3s ease;
+  /* Smooth transition for focus/hover states */
+  height: 38px;
+}
+
+/* Add hover effect for date input */
+.task-input-container div>input[type="date"]:hover {
+  border-color: #777;
+  background-color: #333;
+}
+
+/* Add hover effect for select */
+.task-input-container div>select:hover {
+  border-color: #777;
+  background-color: #333;
+}
+
+/* Focus effect for date input */
+.task-input-container div>input[type="date"]:focus {
+  border-color: #ff8c00;
+  /* Bright border color on focus */
+  background-color: #444;
+  outline: none;
+  /* Removes the default focus outline */
+}
+
+/* Focus effect for select dropdown */
+.task-input-container div>select:focus {
+  border-color: #ff8c00;
+  background-color: #444;
+  outline: none;
+}
+
+.save-task-button {
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+  margin-top: 10px;
+}
+
+.save-task-button:hover {
+  color: skyblue;
+}
+
+.close-button {
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1;
+  /* Ensures the close button is behind the save button */
+  margin-top: 10px;
+}
+
+.close-button:hover {
+  color: rgb(254, 104, 104);
+}
+
+/* Edit task container */
+.task-edit-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.task-edit-container div:nth-child(1) {
+  display: flex;
+  width: 100%;
+}
+
+.task-edit-container div:nth-child(1)>input {
+  display: flex;
+  background-color: #414a4c;
+  width: 100%;
+  color: white;
+  padding: 10px 15px;
+  /* Adds padding for better text spacing */
+  border: 2px solid #333;
+  /* Adds a border with a dark color */
+  border-radius: 8px;
+  /* Rounds the corners */
+  font-size: 14px;
+  /* Increases font size for readability */
+  box-sizing: border-box;
+  /* Ensures padding and border are included in the width */
+  transition: all 0.3s ease;
+  /* Smooth transition for hover/focus states */
+}
+
+/* Task title input */
+.task-edit-container div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  align-content: space-between;
+}
+
+.task-edit-container>div:nth-child(2) div:first-child {
+  gap: 4px;
+}
+
+.task-edit-container div>input[type="date"] {
+  display: block;
+  /* Make it behave like a block-level element */
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  /* Adds padding for comfortable text placement */
+  border: 2px solid #333;
+  /* Adds a dark border */
+  border-radius: 8px;
+  /* Rounded corners */
+  font-size: 10px;
+  /* Font size for readability */
+  box-sizing: border-box;
+  /* Includes padding and border in the width */
+  margin-left: 8px;
+  margin-bottom: 10px;
+  /* Adds space below the input */
+  transition: all 0.3s ease;
+  /* Smooth transition for focus/hover states */
+}
+
+/* Style for the select dropdown */
+.task-edit-container div>select {
+  display: block;
+  /* Ensures the select element takes up full width */
+  background-color: #414a4c;
+  color: white;
+  padding: 10px 15px;
+  /* Padding for better text placement */
+  border: 2px solid #333;
+  /* Adds a dark border */
+  border-radius: 8px;
+  /* Rounded corners for a consistent look */
+  font-size: 10px;
+  /* Adjust font size */
+  box-sizing: border-box;
+  /* Includes padding and border in the width */
+  transition: all 0.3s ease;
+  /* Smooth transition for focus/hover states */
+  height: 38px;
+}
+
+/* Add hover effect for date input */
+.task-edit-container div>input[type="date"]:hover {
+  border-color: #777;
+  background-color: #333;
+}
+
+/* Add hover effect for select */
+.task-edit-container div>select:hover {
+  border-color: #777;
+  background-color: #333;
+}
+
+/* Focus effect for date input */
+.task-edit-container div>input[type="date"]:focus {
+  border-color: #ff8c00;
+  /* Bright border color on focus */
+  background-color: #444;
+  outline: none;
+  /* Removes the default focus outline */
+}
+
+/* Focus effect for select dropdown */
+.task-edit-container div>select:focus {
+  border-color: #ff8c00;
+  background-color: #414a4c;
+  outline: none;
+}
+
+.task-edit-container div:nth-child(2)>div:last-child {
+  padding-bottom: 20px;
+}

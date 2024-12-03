@@ -1,0 +1,67 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background-color:#232b2b ;
+    color: white;
+  }
+  
+  .hamburger {
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin-right: 20px;
+  }
+  
+  /* Rotate the hamburger icon 90 degrees on click */
+  .hamburger.rotated {
+    transform: rotate(180deg);
+  }
+  
+  .logo-container{
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  .spacer {
+    flex: 1;
+  }
+  
+  .search-bar {
+    margin-left: 430px;
+    background-color:#414a4c;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    width: 400px;
+    height: 20px;
+    font-size: 16px;
+    color:white;
+  }
+  
+  .logout-icon {
+    padding-top:2px;
+    cursor: pointer;
+    margin-right: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 28px; /* Adjust icon size */
+    color: white;
+  }
+  
+  .logout-icon {
+    transition: transform 0.3s ease, fill 0.3s ease; /* Smooth animation */
+  }
+
+  .logout-icon:hover {
+    transform: scale(1.1); /* Increases size by 20% */
+  }
+  .logout-icon:hover .logout-path {
+    fill: #ff8c00; /* Change this to your desired hover color */
+  }
+
+  

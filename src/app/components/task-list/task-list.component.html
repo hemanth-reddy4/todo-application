@@ -1,0 +1,87 @@
+<div class="task-list-container">
+    <div class="task-list-header">
+        <span *ngIf="!isEditingTitle">{{ listTitle }}</span>
+        <div *ngIf="isEditingTitle" class="titleEdit">
+            <input type="text" [(ngModel)]="newTitle" placeholder="Enter new title" />
+            <div class="save-title-button" (click)="confirmTitleUpdate()">
+                <span>✔</span>
+            </div>
+        </div>
+        <div class="options">
+            <span class="list-options" (click)="toggleOptions()">⋮</span>
+            <div *ngIf="showOptions" class="tasklist-options-menu">
+                <div (click)="onEditTitle()">Edit Title</div>
+                <div (click)="deleteTaskList()">Delete</div>
+            </div>
+        </div>
+    </div>
+
+    <div (click)="addTaskField()">
+        <div class="add-new-task"><span>+</span> Add a task</div>
+    </div>
+
+    <div *ngIf="isAddingNewTask" class="task-input-container">
+        <div>
+            <input type="text" [(ngModel)]="newTaskTitle" placeholder="New Task" required>
+        </div>
+        <div>
+            <div>
+                <input type="date" [(ngModel)]="newTaskDate" required />
+                <select [(ngModel)]="newTaskPriority">
+                    <option value="High">High</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+            <div class="save-task-button" (click)="saveTask()">
+                <span>✔</span> <!-- Tick mark -->
+            </div>
+            <div class="close-button" (click)="resetNewTaskFields()">
+                <span>&#x2718;</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Task items without list elements -->
+    <div *ngFor="let task of tasks; let i = index" class="task-item">
+        <div *ngIf="!task.isEditing && !task.isCompleted">
+            <input type="radio" class="task-radio" name="taskSelection" (change)="selectTask(task)" />
+            <app-task  [title]="task.title" [date]="task.date | date:'EEE, MMM d'" [tag]="task.tag"
+                [isCompleted]="task.isCompleted" [onDelete]="deleteTask.bind(this)" (taskDuplicated)="duplicateTask(task.title)" (onEdit)="editTask(i)">
+            </app-task>
+        </div>
+        <div *ngIf="task.isEditing" class="task-edit-container">
+            <div>
+                <input type="text" [(ngModel)]="newTaskTitle" placeholder="Edit Task" required>
+            </div>
+            <div>
+                <div>
+                    <input type="date" [(ngModel)]="newTaskDate" required />
+                    <select [(ngModel)]="newTaskPriority">
+                        <option value="High">High</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="save-task-button" (click)="updateTask()">
+                    <span>✔</span> <!-- Tick mark -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Completed Tasks Section -->
+    <div class="completed-tasks">
+        <div class="completed-header" (click)="toggleCompleted()">
+            <span>Completed</span>
+            <span class="arrow" [ngClass]="{'down-arrow': showCompleted, 'up-arrow': !showCompleted}">▼</span>
+        </div>
+        <div *ngIf="showCompleted" class="completed-tasks-list">
+            <div *ngFor="let task of tasks" class="completed-task-item">
+                <app-task *ngIf="task.isCompleted" [title]="task.title" [date]="task.date | date:'EEE, MMM d'"
+                    [tag]="task.tag" [onDelete]="deleteTask.bind(this)"
+                    (recoverTask)="recoverTask(task.title)" [isCompleted]="task.isCompleted">
+                </app-task>
+            </div>
+        </div>
+    </div>
+</div>

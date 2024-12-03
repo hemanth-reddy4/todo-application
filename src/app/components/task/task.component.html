@@ -1,0 +1,32 @@
+<div class="task">
+  <div *ngIf="!isEditing">
+    <div class="task-header">
+      <span class="task-title" [class.strikethrough]="isCompleted">{{ title }}</span>
+      <div class="options">
+        <span class="three-dots" (click)="toggleOptions()">⋮</span>
+        <div *ngIf="showOptions" class="task-options-menu">
+          <div *ngIf="!isCompleted" (click)="editTask()">Edit</div>
+          <div *ngIf="!isCompleted" (click)="duplicateTask()">Duplicate</div>
+          <div *ngIf="isCompleted" (click)="recover()">Recover</div>
+          <div (click)="deleteTask()">Delete</div>
+        </div>
+      </div>
+    </div>
+    <div class="task-info">
+      <span class="task-date">{{ date }}</span>
+      <span *ngIf="tag" [ngClass]="getTagClass()" class="task-tag">{{ tag }}</span>
+    </div>
+  </div>
+
+  <!-- Edit form - similar to "Add New Task" form UI -->
+  <div *ngIf="isEditing" class="edit-task-form">
+    <input type="text" [(ngModel)]="editedTitle" placeholder="Edit title" />
+    <input type="date" [(ngModel)]="editedDate" placeholder="Edit date" />
+    <select [(ngModel)]="editedTag">
+      <option value="High">High</option>
+      <option value="Low">Low</option>
+    </select>
+    <button (click)="saveEdit()">Save</button>
+    <button (click)="cancelEdit()">Cancel</button>
+  </div>
+</div>

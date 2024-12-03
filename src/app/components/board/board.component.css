@@ -1,0 +1,228 @@
+
+  /* Full height minus navbar space for the board container */
+  .board-container {
+    height: calc(100vh - 60px); /* Adjust based on navbar height */
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+    padding-top: 8px;
+    position: relative;
+    background-color: #414a4c;
+    overflow: hidden; /* Prevent vertical scrolling */
+  }
+  
+  /* Title and options row at the top */
+  .board-header {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 16px;
+    align-items: center;
+  }
+  .board-title {
+    font-size: 24px;
+    color: white;
+  }
+  .board-options {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  
+  /* Horizontal scrolling for the task lists */
+  .task-lists-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    flex-grow: 1; /* Occupies remaining height */
+    overflow-y: hidden; /* Disable vertical scrolling */
+  }
+  
+
+  /* Hiding scrollbar (customize as needed) */
+  .task-lists-container::-webkit-scrollbar {
+    height: 0; /* Hide horizontal scrollbar */
+  }
+  
+  .task-lists-container {
+    scrollbar-width: none; /* For Firefox to hide scrollbar */
+  }
+  app-task-list::-webkit-scrollbar{
+    display: none;
+  }
+  /* Positioning the "Add New Task List" button */
+  /* Positioning the "Add New Task List" button */
+.add-task-list-btn {
+  position: fixed;
+  right: 60px;
+  bottom: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #555;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.add-task-list-btn > span {
+  color: #00aaff;
+  font-size: 18px;
+  padding-right: 8px;
+}
+
+/* Text Input Field Styling */
+.task-list-input {
+  position: fixed;
+  right: 80px;
+  bottom: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.task-list-input input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  width: 200px; /* Adjust width as needed */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);  /* Light shadow for emphasis */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.task-list-input input:focus {
+  border-color: #0077cc;  /* Highlight border on focus */
+  box-shadow: 0px 0px 8px rgba(0, 119, 204, 0.4);  /* Soft glow on focus */
+}
+
+.task-list-input input::placeholder {
+  color: #888;  /* Lighter placeholder text color */
+}
+
+.add-task-list-btn:hover {
+  background-color: #0077cc;
+  transform: scale(1.05);
+}
+
+.add-task-list-btn:active {
+  background-color: #005fa3;
+  transform: scale(0.98);
+}
+
+/* Add shadow for input field */
+.task-list-input input,
+.task-list-input {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.tick-icon {
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  background: none;
+  border: none;
+}
+.tick-icon:hover {
+  color: skyblue;
+}
+.board-options {
+  font-size: 16px;
+  font-weight: lighter;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  /* For positioning the dropdown */
+  z-index: 10;
+}
+
+.taskBoard-options-menu {
+  position: absolute;
+  /* Position absolutely relative to .options */
+  right: 0px;
+  /* Move it slightly to the right */
+  top: 100%;
+  /* Position it just below the three dots */
+  background-color: #2a2a3a;
+  /* Same background as task */
+  border-radius: 5px;
+  /* Rounded corners for the menu */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  /* Subtle shadow for depth */
+  z-index: 10;
+  /* Ensure it appears above other elements */
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  /* Stack options vertically */
+}
+
+.taskBoard-options-menu div {
+  padding: 8px 12px;
+  /* Padding for each option */
+  color: #e0e0e0;
+  /* Light color for text */
+  cursor: pointer;
+  /* Pointer cursor for interactivity */
+}
+.three-dot{
+  font-size:24px;
+  margin-right: 20px;
+}
+.taskBoard-options-menu {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.taskBoard-options-menu div:hover {
+  background-color: #3a3a4a;
+  /* Highlight on hover */
+}
+.titleEdit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Optional: Adds spacing between input and button */
+}
+
+.titleEdit input[type="text"] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Optional: Adds spacing between input and button */
+}
+
+.titleEdit input[type="text"] {
+  display: flex;
+  background-color: black;
+  width: 100%;
+  color: white;
+  padding: 10px 15px;
+  /* Adds padding for better text spacing */
+  border: 2px solid #333;
+  /* Adds a border with a dark color */
+  border-radius: 8px;
+  /* Rounds the corners */
+  font-size: 14px;
+  /* Increases font size for readability */
+  box-sizing: border-box;
+  /* Ensures padding and border are included in the width */
+  transition: all 0.3s ease;
+}
+.save-title-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /* Optional: Adjust padding for button appearance */
+  /* Optional: Rounded corners for button */
+  padding-bottom: 2px;
+  border-radius: 4px;
+  background-color: none;
+}
+
+.save-title-button span {
+  font-size: 24px;
+  color:white;
+  /* Optional: Adjust tick mark size */
+}

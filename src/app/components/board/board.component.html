@@ -1,0 +1,42 @@
+<div class="board-container">
+    <!-- Header row with title and options -->
+    <div class="board-header">
+        <h2 *ngIf="!isEditingTitle" class="board-title">{{boardTitle}}</h2>
+        <div *ngIf="isEditingTitle" class="titleEdit">
+            <input type="text" [(ngModel)]="newTitle" placeholder="Enter new title" />
+            <div class="save-title-button" (click)="confirmTitleUpdate()">
+                <span>✔</span>
+            </div>
+        </div>
+        <div class="board-options">
+            <span (click)="toggleOptions()" class="three-dot" *ngIf="id">⋮</span>
+            <div *ngIf="showOptions" class="taskBoard-options-menu">
+                <div (click)="onEditTitle()">Edit Title</div>
+                <div (click)="deleteBoard()">Delete</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task lists container, scrollable horizontally if needed -->
+    <div class="task-lists-container">
+        <app-task-list 
+            *ngFor="let list of taskLists" 
+            [taskListId]="list.id"
+            [listTitle]="list.title" 
+            [tasks]="list.tasks"
+            (delete)="deleteTaskList(list.id)"
+            (titleUpdated)="onTitleUpdated($event)"
+            (deleteTaskFromBoard)="onTaskDeleted($event)">
+        </app-task-list>
+    </div>
+
+    <!-- "Add New Task List" button at the bottom right -->
+    <button class="add-task-list-btn" (click)="startEditing()" *ngIf="id"><span>+</span> Add new list</button>
+    <!-- Text Input Field with Tick Icon -->
+    <div *ngIf="isEditing" class="task-list-input">
+        <input type="text" [(ngModel)]="newTaskTitle" placeholder="Enter Task List Title" />
+        <button class="tick-icon" (click)="addTaskList()">
+                <span>✔</span> <!-- Tick mark -->
+        </button>
+    </div>
+</div>
